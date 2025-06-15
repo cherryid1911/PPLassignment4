@@ -47,7 +47,48 @@ describe('Q1 Tests', () => {
             assert(err === 3,"Q1 test 2 failed")
         })
     })
+
+    it("Q1 test 3 - empty array should resolve to []", async () => {
+    await all([]).then(content => {
+        expect(content).to.deep.equal([]);
+    }).catch(err => {
+        assert.fail("Q1 test 3 failed");
+    });
+  })
+
+    it("Q1 test 4 - single promise", async () => {
+    await all([p2()]).then(content => {
+        expect(content).to.deep.equal([2]);
+    }).catch(err => {
+        assert.fail("Q1 test 4 failed");
+    });
+    })
+
+    it("Q1 test 5 - single rejected promise", async () => {
+    await all([p3()]).then(content => {
+        assert.fail("Q1 test 5 failed");
+    }).catch(err => {
+        expect(err).to.equal(3);
+    });
+    })
+
+    it("Q1 test 6 - one rejected among multiple promises", async () => {
+    await all([p1(), p3(), p2()]).then(content => {
+        assert.fail("Q1 test 6 failed");
+    }).catch(err => {
+        expect(err).to.equal(3);
+    });
+    })
+
+    it("Q1 test 7 - order is preserved", async () => {
+    await all([p2(), p1()]).then(content => {
+        expect(content).to.deep.equal([2, 1]);
+    }).catch(err => {
+        assert.fail("Q1 test 7 failed");
+    });
 });
+});
+
 
 describe('Q2 Tests', () => {
 
@@ -59,3 +100,5 @@ describe('Q2 Tests', () => {
       expect(take(10, Fib2())).to.deep.equal([1,1,2,3,5,8,13,21,34,55]);
     })
 });
+
+
