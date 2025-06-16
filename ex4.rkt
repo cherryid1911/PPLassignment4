@@ -50,10 +50,12 @@
 ; Type: [List * List * [List -> T]] -> T
 ; Purpose: Returns the concatination of the given two lists, with cont pre-processing
 (define append$
-  (lambda (lst1 lst2 cont)
-    #f ;@TODO
-  )
-)
+  (lambda (lst1 lst2 c)
+    (let loop ((lst lst1) (cont c))
+      (if (null? lst)
+          (cont lst2)
+          (loop (cdr lst)
+                (lambda (v) (cont (cons (car lst) v))))))))
 
 ;;; Q3.2
 ; Signature: equal-trees$(tree1, tree2, succ, fail) 
