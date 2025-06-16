@@ -99,6 +99,28 @@ describe('Q2 Tests', () => {
     it("Q2 test 2", () => {
       expect(take(10, Fib2())).to.deep.equal([1,1,2,3,5,8,13,21,34,55]);
     })
+
+    it("Q2 test 3", () => {
+      expect(take(1, Fib1())).to.deep.equal([1]);
+    })
+
+    it("Q2 test 4", () => {
+      expect(take(1, Fib2())).to.deep.equal([1]);
+    })
+
+    it("Q2 test 5", () => {
+      expect(take(20, Fib1())).to.deep.equal([1,1,2,3,5,8,13,21,34,55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765]);
+    })
+
+    it("Q2 test 6", () => {
+      expect(take(20, Fib2())).to.deep.equal([1,1,2,3,5,8,13,21,34,55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765]);
+    })
+
+    it("Q2 test 7", () => {
+      expect(take(0, Fib1())).to.deep.equal([]);
+    })
+
+    it("Q2 test 8", () => {
+      expect(take(0, Fib2())).to.deep.equal([]);
+    })
 });
-
-
