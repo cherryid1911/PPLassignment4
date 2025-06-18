@@ -14,8 +14,6 @@
   (lambda (lzl)
     ((cdr lzl))))
 
-(define leaf? (lambda (x) (not (list? x))))
-
 ;; Signature: map-lzl(f, lz)
 ;; Type: [[T1 -> T2] * Lzl(T1) -> Lzl(T2)]
 (define map-lzl
@@ -57,16 +55,49 @@
           (loop (cdr lst)
                 (lambda (v) (cont (cons (car lst) v))))))))
 
+(define make-tree list)
+
+(define add-subtree cons)
+
+(define make-leaf 
+  (lambda (x) x))
+
+(define empty-tree? empty?)
+
+(define first-subtree car)
+
+(define rest-subtree cdr)
+
+(define leaf-data 
+  (lambda (x) x))
+
+(define composite-tree? list?)
+
+(define leaf? 
+  (lambda (x) (not (composite-tree? x))))
+
 ;;; Q3.2
 ; Signature: equal-trees$(tree1, tree2, succ, fail) 
 ; Type: [Tree * Tree * [Tree ->T1] * [Pair->T2] -> T1 U T2
 ; Purpose: Determines the structure identity of a given two lists, with post-processing succ/fail
 (define equal-trees$ 
   (lambda (tree1 tree2 succ fail)
-    #f ;@TODO
+    (cond ((and (empty-tree? tree1) (empty-tree? tree2)) (succ '()))
+          ((and (leaf? tree1) (leaf? tree2)) (succ (cons tree1 tree2)))
+          ((and (composite-tree? tree1) (composite-tree? tree2)) 
+            (equal-trees$ (car tree1) (car tree2)
+              (lambda (car-result)
+                (equal-trees$ (cdr tree1) (cdr tree2)
+                  (lambda (cdr-result)
+                    (succ (cons car-result cdr-result)))
+                  fail))
+              fail))
+
+          (else ; structure mis-match
+            (fail (cons tree1 tree2)))
+    )
   )
 )
-
 
 
 ;;; Q4.1
