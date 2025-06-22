@@ -4,17 +4,17 @@
 
 (define id (lambda (x) x))
 
-;;; ;; Q1a
-;;; (check-equal? (append$ '(1 2) '(3 4) id) '(1 2 3 4) "incorrect append$ 1")
-;;; (check-equal? (append$ '() '(3 4) id)  '(3 4) "incorrect append$ 2")
-;;; (check-equal? (append$ '() '() id)  '() "incorrect append$ 3")
-;;; (check-equal? (append$ '(a b) '() id) '(a b) "incorrect append$ 4")
-;;; (check-equal? (append$ '(#t #f) '(#f #t) id) '(#t #f #f #t) "incorrect append$ 5")
-;;; (check-equal? (append$ '(1) '(2 3 4) id) '(1 2 3 4) "incorrect append$ 6")
-;;; (check-equal? (append$ '(x) '() id) '(x) "incorrect append$ 7")
-;;; (check-equal? (append$ '() '(only) id) '(only) "incorrect append$ 8")
-;;; (check-equal? (append$ '(one two) '(three four five) id) '(one two three four five) "incorrect append$ 9")
-;;; (check-equal? (append$ '((1) (2)) '((3) (4)) id) '((1) (2) (3) (4)) "incorrect append$ 10")
+;; Q1a
+(check-equal? (append$ '(1 2) '(3 4) id) '(1 2 3 4) "incorrect append$ 1")
+(check-equal? (append$ '() '(3 4) id)  '(3 4) "incorrect append$ 2")
+(check-equal? (append$ '() '() id)  '() "incorrect append$ 3")
+(check-equal? (append$ '(a b) '() id) '(a b) "incorrect append$ 4")
+(check-equal? (append$ '(#t #f) '(#f #t) id) '(#t #f #f #t) "incorrect append$ 5")
+(check-equal? (append$ '(1) '(2 3 4) id) '(1 2 3 4) "incorrect append$ 6")
+(check-equal? (append$ '(x) '() id) '(x) "incorrect append$ 7")
+(check-equal? (append$ '() '(only) id) '(only) "incorrect append$ 8")
+(check-equal? (append$ '(one two) '(three four five) id) '(one two three four five) "incorrect append$ 9")
+(check-equal? (append$ '((1) (2)) '((3) (4)) id) '((1) (2) (3) (4)) "incorrect append$ 10")
 
 
 ;; Q1b
