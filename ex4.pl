@@ -39,7 +39,6 @@ book(the_lord_of_the_rings, t, f, s(s(s(s(s(s(zero))))))).
 
 % You can add more facts.
 
-max_list([], false).
 max_list([X], X).
 max_list([H|T], Max) :-
     max_list(T, MaxTail),
